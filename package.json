@@ -1,0 +1,69 @@
+{
+  "name": "@nova-fe/editor",
+  "version": "1.1.0",
+  "description": "一个基于 React 的高性能 TextArea，支持拼写检查、撤销重做等功能。支持 2w+ 字符实时编辑。",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@rsbuild/plugin-react": "^1.3.1",
+    "@rslib/core": "^0.8.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/html-to-text": "^9.0.4",
+    "@types/jest": "^29.5.0",
+    "@types/react": "^19.1.0",
+    "@types/typo-js": "^1.2.2",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "react": "^19.1.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "dependencies": {
+    "html-to-text": "^9.0.5",
+    "typo-js": "^1.2.5",
+    "use-undo": "^1.1.1"
+  },
+  "keywords": [
+    "react",
+    "editor",
+    "rich-text",
+    "contenteditable",
+    "spellcheck",
+    "spell-checker",
+    "undo-redo",
+    "typescript",
+    "web-worker",
+    "performance",
+    "typo-js",
+    "TextArea",
+    "拼写检查"
+  ],
+  "author": "Leslie",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
