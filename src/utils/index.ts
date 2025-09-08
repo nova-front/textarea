@@ -511,7 +511,7 @@ export const htmlConvertText = (html: string) => {
 export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number,
-  options: { leading?: boolean; trailing?: boolean } = {}
+  options: { leading?: boolean; trailing?: boolean } = {},
 ): T & { cancel: () => void } {
   const { leading = false, trailing = true } = options;
   let timeoutId: NodeJS.Timeout | null = null;

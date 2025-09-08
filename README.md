@@ -1,4 +1,4 @@
-# @nova-fe/editor
+# @nova-fe/textarea
 
 一个基于 React 的高性能 TextArea，支持拼写检查、撤销重做等功能。
 
@@ -15,11 +15,11 @@
 ## 📦 安装
 
 ```bash
-npm install @nova-fe/editor
+npm install @nova-fe/textarea
 # 或
-yarn add @nova-fe/editor
+yarn add @nova-fe/textarea
 # 或
-pnpm add @nova-fe/editor
+pnpm add @nova-fe/textarea
 ```
 
 ## 🚀 快速开始
@@ -27,7 +27,7 @@ pnpm add @nova-fe/editor
 ### 基础 TextArea（非受控）
 
 ```tsx
-import { TextArea } from '@nova-fe/editor';
+import { TextArea } from '@nova-fe/textarea';
 
 function App() {
   return <TextArea placeholder="请输入内容..." />;
@@ -37,18 +37,14 @@ function App() {
 ### 受控 TextArea
 
 ```tsx
-import { TextArea } from '@nova-fe/editor';
+import { TextArea } from '@nova-fe/textarea';
 import { useState } from 'react';
 
 function App() {
   const [value, setValue] = useState('');
 
   return (
-    <TextArea
-      placeholder="请输入内容..."
-      value={value}
-      onChange={setValue}
-    />
+    <TextArea placeholder="请输入内容..." value={value} onChange={setValue} />
   );
 }
 ```
@@ -56,7 +52,7 @@ function App() {
 ### 带拼写检查的 TextArea
 
 ```tsx
-import { TextArea } from '@nova-fe/editor';
+import { TextArea } from '@nova-fe/textarea';
 
 function App() {
   return <TextArea placeholder="请输入内容..." spellcheck={true} />;
@@ -66,7 +62,7 @@ function App() {
 ### 撤销重做 TextArea
 
 ```tsx
-import { TextAreaUndo } from '@nova-fe/editor';
+import { TextAreaUndo } from '@nova-fe/textarea';
 
 function App() {
   return <TextAreaUndo placeholder="请输入内容..." spellcheck={true} />;
@@ -115,7 +111,7 @@ function App() {
 ### 自定义词典 API
 
 ```tsx
-import { useSpellChecker } from '@nova-fe/editor';
+import { useSpellChecker } from '@nova-fe/textarea';
 
 function App() {
   const { addWord, removeWord, getAllCustomWords } = useSpellChecker();
@@ -212,7 +208,7 @@ module.exports = {
 ### 获取 TextArea 实例
 
 ```tsx
-import { TextArea, TextAreaHandle } from '@nova-fe/editor';
+import { TextArea, TextAreaHandle } from '@nova-fe/textarea';
 import { useRef } from 'react';
 
 function App() {
@@ -235,7 +231,7 @@ function App() {
 ### 自定义拼写检查
 
 ```tsx
-import { TextArea, useSpellChecker } from '@nova-fe/editor';
+import { TextArea, useSpellChecker } from '@nova-fe/textarea';
 
 function App() {
   const { addWords, exportCustomDictionary } = useSpellChecker();

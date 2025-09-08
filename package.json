@@ -1,6 +1,6 @@
 {
-  "name": "@nova-fe/editor",
-  "version": "1.1.0",
+  "name": "@nova-fe/textarea",
+  "version": "1.0.0",
   "description": "一个基于 React 的高性能 TextArea，支持拼写检查、撤销重做等功能。支持 2w+ 字符实时编辑。",
   "type": "module",
   "exports": {
