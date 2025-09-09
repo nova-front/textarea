@@ -48,9 +48,9 @@ export const UndoableEditor = forwardRef<
   // 防抖配置（300ms普通输入，立即提交的特殊按键）
   const debouncedSetState = useRef(
     debounce(
-      (newState: EditorState) => {
+      (newState: unknown) => {
         if (!isInternalUpdate.current) {
-          setState(newState);
+          setState(newState as EditorState);
         }
       },
       300,

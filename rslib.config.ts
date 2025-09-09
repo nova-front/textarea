@@ -11,7 +11,7 @@ export default defineConfig({
   lib: [
     {
       bundle: false,
-      dts: false, // 暂时禁用类型生成
+      dts: true, // 启用类型生成
       format: 'esm',
     },
   ],
