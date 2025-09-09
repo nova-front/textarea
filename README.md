@@ -2,6 +2,14 @@
 
 一个基于 React 的高性能 TextArea，支持拼写检查、撤销重做等功能。
 
+## 🌐 在线演示
+
+[![Deploy Demo](https://github.com/[用户名]/textarea/actions/workflows/deploy-demo.yml/badge.svg)](https://github.com/[用户名]/textarea/actions/workflows/deploy-demo.yml)
+
+**[🚀 查看在线演示](https://[用户名].github.io/textarea/)**
+
+> 演示包含了所有组件的使用示例和功能展示
+
 ## ✨ 特性
 
 - 🚀 **高性能**：支持 2w+ 字符实时编辑（60FPS）
@@ -275,8 +283,30 @@ MIT License
 
 欢迎提交 Issue 和 Pull Request！
 
+## 🚀 部署和演示
+
+### 在线演示
+- **演示地址**: [https://[用户名].github.io/textarea/](https://[用户名].github.io/textarea/)
+- **自动部署**: 推送到主分支自动更新演示
+- **构建状态**: 查看 [GitHub Actions](https://github.com/[用户名]/textarea/actions)
+
+### 本地运行演示
+```bash
+# 构建组件库
+npm run build
+
+# 运行演示
+cd demo
+npm install
+npm run dev
+```
+
+### 部署到 GitHub Pages
+项目已配置自动部署，详见 [部署说明](./DEPLOYMENT.md)
+
 ## 📚 更多文档
 
 - [拼写检查详细文档](./doc/Dictionary.md)
 - [性能优化指南](./doc/Performance.md)
 - [API 参考](./doc/API.md)
+- [部署说明](./DEPLOYMENT.md)
