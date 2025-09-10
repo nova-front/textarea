@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 // 防抖函数
 export const useDebounce = (callback: () => void, delay: number) => {
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {

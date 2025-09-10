@@ -261,8 +261,8 @@ export const ContentEditable = forwardRef<
     );
 
     // 防抖定时器
-    const debounceTimerRef = useRef<number | null>(null);
-    const spellCheckTimerRef = useRef<number | null>(null);
+    const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const spellCheckTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     // 完全隔离的输入处理 - 不触发任何拼写检查相关操作
     const handleInput = useCallback(() => {
