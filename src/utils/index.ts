@@ -514,7 +514,7 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
   options: { leading?: boolean; trailing?: boolean } = {},
 ): T & { cancel: () => void } {
   const { leading = false, trailing = true } = options;
-  let timeoutId: NodeJS.Timeout | null = null;
+  let timeoutId: number | null = null;
   let lastCallTime = 0;
   let lastInvokeTime = 0;
   let lastArgs: Parameters<T> | undefined;
