@@ -14,6 +14,7 @@ export {
 
 // 导出 hooks
 export { useSpellChecker } from './dictionary/useTypeByWorker';
+export type { SpellCheckerDictionaryPath } from './dictionary/useTypeByWorker';
 
 // 导出工具函数
 export {

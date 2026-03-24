@@ -67,6 +67,29 @@ function App() {
 }
 ```
 
+### 使用自定义字典路径
+
+默认使用包内置的英语词典，消费方可通过 `dictionaryPath` 指定自己托管的词典文件（`.aff` + `.dic`），词典生命周期由消费方管理。
+
+```tsx
+import { TextArea } from '@nova-fe/textarea';
+
+function App() {
+  return (
+    <TextArea
+      placeholder="请输入内容..."
+      spellcheck={true}
+      dictionaryPath={{
+        aff: '/static/dicts/en_US.aff',
+        dic: '/static/dicts/en_US.dic',
+      }}
+    />
+  );
+}
+```
+
+> `dictionaryPath` 变化时编辑器会自动重载字典，无需手动操作。
+
 ### 撤销重做 TextArea
 
 ```tsx
@@ -88,6 +111,7 @@ function App() {
 | `placeholder`      | `string`                 | `undefined` | 占位符文本         |
 | `spellcheck`       | `boolean`                | `false`     | 是否启用拼写检查   |
 | `customDictionary` | `string[]`               | `[]`        | 自定义词典单词列表 |
+| `dictionaryPath`   | `{ aff: string; dic: string }` | `undefined` | 消费方自定义字典文件路径，未传入时使用内置英语词典 |
 | `disabled`         | `boolean`                | `false`     | 是否禁用编辑       |
 | `onFocus`          | `() => void`             | `undefined` | 获得焦点回调       |
 | `onBlur`           | `() => void`             | `undefined` | 失去焦点回调       |
@@ -119,10 +143,16 @@ function App() {
 ### 自定义词典 API
 
 ```tsx
-import { useSpellChecker } from '@nova-fe/textarea';
+import { useSpellChecker, type SpellCheckerDictionaryPath } from '@nova-fe/textarea';
 
 function App() {
-  const { addWord, removeWord, getAllCustomWords } = useSpellChecker();
+  // 可选：传入自定义字典路径，不传则使用内置词典
+  const dictionaryPath: SpellCheckerDictionaryPath = {
+    aff: '/static/dicts/en_US.aff',
+    dic: '/static/dicts/en_US.dic',
+  };
+
+  const { addWord, removeWord, getAllCustomWords } = useSpellChecker(dictionaryPath);
 
   const handleAddWord = () => {
     addWord('customword');

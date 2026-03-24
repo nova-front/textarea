@@ -4,7 +4,12 @@ import {
   createCustomDictionary,
 } from './customDictionary';
 
-export const useSpellChecker = () => {
+export interface SpellCheckerDictionaryPath {
+  aff: string;
+  dic: string;
+}
+
+export const useSpellChecker = (dictionaryPath?: SpellCheckerDictionaryPath) => {
   const [worker, setWorker] = useState<Worker | null>(null);
   const [isReady, setIsReady] = useState(false);
   const customDictionary = useRef<CustomDictionary | null>(null);
@@ -37,13 +42,16 @@ export const useSpellChecker = () => {
     // 加载字典
     const loadDictionary = async () => {
       try {
+        const affUrl = dictionaryPath
+          ? dictionaryPath.aff
+          : new URL('../assets/en_US.aff', import.meta.url).toString();
+        const dicUrl = dictionaryPath
+          ? dictionaryPath.dic
+          : new URL('../assets/en_US.dic', import.meta.url).toString();
+
         const [affData, dicData] = await Promise.all([
-          fetch(new URL('../assets/en_US.aff', import.meta.url)).then((res) =>
-            res.text(),
-          ),
-          fetch(new URL('../assets/en_US.dic', import.meta.url)).then((res) =>
-            res.text(),
-          ),
+          fetch(affUrl).then((res) => res.text()),
+          fetch(dicUrl).then((res) => res.text()),
         ]);
 
         newWorker.postMessage({
@@ -70,7 +78,7 @@ export const useSpellChecker = () => {
       newWorker.terminate();
       customDictionary.current = null;
     };
-  }, []);
+  }, [dictionaryPath?.aff, dictionaryPath?.dic]);
 
   // 拼写检查方法（本地快速检查）
   const check = (word: string) => {

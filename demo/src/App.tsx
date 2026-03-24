@@ -3,10 +3,16 @@ import {
   TextArea,
   TextAreaCore,
   TextAreaUndo,
+  type SpellCheckerDictionaryPath,
   type TextAreaUndoHandle,
 } from '@nova-fe/textarea';
 import DemoSection from './components/DemoSection';
 import './styles/global.css';
+
+const dictionaryPath: SpellCheckerDictionaryPath = {
+  aff: '/assets/en_US.aff',
+  dic: '/assets/en_US.dic',
+};
 
 const App: React.FC = () => {
   const undoableEditorRef = useRef<TextAreaUndoHandle>(null);
@@ -269,6 +275,54 @@ const undoableEditorRef = useRef<TextAreaUndoHandle>(null);
                 <li>红色波浪线标记错误</li>
               </ul>
             </div>
+          </DemoSection>
+
+          <DemoSection
+            title="📂 自定义字典路径"
+            description="通过 dictionaryPath 传入消费方自己托管的 .aff / .dic 文件路径，词典由消费方管理；不传则使用包内置英语词典"
+            code={`import { TextArea, type SpellCheckerDictionaryPath } from "@nova-fe/textarea";
+
+// 消费方将字典文件放在自己的静态资源目录
+const dictionaryPath: SpellCheckerDictionaryPath = {
+  aff: '/assets/en_US.aff',
+  dic: '/assets/en_US.dic',
+};
+
+<TextArea
+  placeholder="使用自定义字典路径..."
+  spellcheck={true}
+  dictionaryPath={dictionaryPath}
+/>`}
+          >
+            <div
+              style={{
+                padding: '1rem',
+                backgroundColor: '#f9f0ff',
+                borderRadius: '6px',
+                border: '1px solid #d3adf7',
+                marginBottom: '1rem',
+              }}
+            >
+              <h4 style={{ margin: '0 0 0.5rem 0', color: '#722ed1' }}>💡 说明</h4>
+              <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#666', fontSize: '0.9rem' }}>
+                <li>未传 <code>dictionaryPath</code> 时，自动使用包内置的英语词典（零配置）</li>
+                <li>传入路径后，词典文件由消费方自行托管与更新</li>
+                <li><code>dictionaryPath</code> 变化时编辑器自动重载字典，无需手动操作</li>
+                <li>可用于替换为其他语言或私有词典</li>
+              </ul>
+            </div>
+            <TextArea
+              placeholder="使用自定义字典路径..."
+              spellcheck={true}
+              dictionaryPath={dictionaryPath}
+              fontSize="16px"
+              lineHeight={1.6}
+              padding="12px"
+              minHeight="120px"
+              border="1px solid #722ed1"
+              borderRadius="6px"
+              backgroundColor="#f9f0ff"
+            />
           </DemoSection>
 
           <DemoSection

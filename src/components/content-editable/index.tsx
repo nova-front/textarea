@@ -33,6 +33,7 @@ export interface ContentEditableProps {
   onBlur?: () => void;
   spellcheck?: boolean;
   customDictionary?: string[]; // 自定义词典单词列表
+  dictionaryPath?: { aff: string; dic: string }; // 消费方自定义字典文件路径
   // 编辑器样式配置 - 替代直接的 style 属性
   fontSize?: string | number;
   lineHeight?: string | number;
@@ -73,6 +74,7 @@ export const ContentEditable = forwardRef<
       onBlur,
       spellcheck = false,
       customDictionary = [],
+      dictionaryPath,
       // 样式 props
       fontSize = '14px',
       lineHeight = '1.5',
@@ -97,7 +99,7 @@ export const ContentEditable = forwardRef<
     const [ranges, setRanges] = useState<TextPosition[]>([]);
 
     // 拼写检查
-    const { worker, addWords, removeWords } = useSpellChecker();
+    const { worker, addWords, removeWords } = useSpellChecker(dictionaryPath);
     const workerRef = useRef<Worker | null>(null);
     const prevCustomDictionary = useRef<string[]>([]);
 
